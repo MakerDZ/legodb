@@ -1,0 +1,15 @@
+{
+    "name": "@legodb/db",
+    "version": "0.0.0",
+    "scripts": {
+        "db:push": "npx dotenv -e .env.local -- prisma db push",
+        "db:generate": "npx dotenv -e .env.local -- prisma generate",
+        "db:view": "npx dotenv -e .env.local -- prisma studio"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.20.0"
+    },
+    "devDependencies": {
+        "prisma": "^5.20.0"
+    }
+}

@@ -26,6 +26,6 @@ The very first concept of the LegoDb Demo MVP was developed, but due to skill is
 
 As my skills improve, the quality, performance, and security of this project will continue to get better. This project will be a long-term endeavor for me, and I will focus on improving my skills while working on it during my free time.
 
-[You can view the roadmap and to-do list here](https://github.com/makerdz).
+[You can view the roadmap and to-do list here](https://github.com/users/MakerDZ/projects/1).
 <br><br>
 
