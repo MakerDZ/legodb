@@ -21,5 +21,5 @@ I have had to develop different dashboards multiple times. Most of the time, the
  <h2>Roadmap</h2>
 </p>
 The very first concept of the LegoDb Demo MVP was developed, but due to skill issues, the performance is really bad. The UI/UX hasn't been properly addressed because it's just a demo MVP developed in a short amount of time. The current goal is to fix performance issues, resolve bugs, enhance the UI/UX, and refactor the codebase to make it more modular and reusable. You can view the roadmap and to-do list here.
-
+<br><br>
 As my skills improve, the quality, performance, and security of this project will continue to get better. This project will be a long-term endeavor for me, and I will focus on improving my skills while working on it during my free time.
