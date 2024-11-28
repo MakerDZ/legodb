@@ -5,6 +5,9 @@
         "commit": "cz-customizable",
         "build": "turbo build",
         "dev": "turbo dev",
+        "dev:web": "turbo dev --filter=web",
+        "db:push": "turbo db:push",
+        "db:generate": "turbo db:generate",
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },

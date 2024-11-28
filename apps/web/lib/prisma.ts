@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@legodb/db';
 
 const client = new PrismaClient({
     errorFormat: 'pretty',

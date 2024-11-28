@@ -38,6 +38,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.1(react-hook-form@7.53.2(react@18.3.1))
+      '@legodb/db':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@lucia-auth/adapter-prisma':
         specifier: ^4.0.1
         version: 4.0.1(@prisma/client@5.22.0(prisma@5.22.0))(lucia@3.2.2)
@@ -92,9 +95,6 @@ importers:
       '@nextui-org/theme':
         specifier: 2.2.11
         version: 2.2.11(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@20.5.7)(typescript@5.0.4)))
-      '@prisma/client':
-        specifier: ^5.20.0
-        version: 5.22.0(prisma@5.22.0)
       '@react-aria/ssr':
         specifier: 3.9.4
         version: 3.9.4(react@18.3.1)
@@ -294,9 +294,6 @@ importers:
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
-      prisma:
-        specifier: ^5.20.0
-        version: 5.22.0
       tailwind-variants:
         specifier: 0.1.20
         version: 0.1.20(tailwindcss@3.4.3(ts-node@10.9.2(@types/node@20.5.7)(typescript@5.0.4)))
