@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma';
+import db from '../libs/prisma';
 
 type ResponseType = {
     id: string;
@@ -38,7 +38,7 @@ const DataPhaser = async (responseData: unknown): Promise<any[]> => {
                                 JSON.parse(content).map(async (row: any) => {
                                     try {
                                         const rowData =
-                                            await prisma.rowOrder.findMany({
+                                            await db.rowOrder.findMany({
                                                 where: { id: row.rowID }, // Fetch data using rowID
                                                 include: { rowData: true },
                                             });

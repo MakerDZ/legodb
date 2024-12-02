@@ -93,16 +93,6 @@ model RowData {
   updatedAt DateTime
 }
 
-// model RowProperty {
-//   id         String          @id @default(auto()) @map("_id") @db.ObjectId
-//   name       String
-//   type       RowPropertyType
-//   content    Json // Stores dynamic content in JSON format, varies based on type
-//   rowOrder   Int
-//   database   Database        @relation(fields: [databaseId], references: [id], onDelete: Cascade, name: "DatabaseRows")
-//   databaseId String          @db.ObjectId
-// }
-
 model GodAccessToken {
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
   name              String

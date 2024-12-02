@@ -1,0 +1,28 @@
+{
+    "name": "@legodb/backend",
+    "version": "1.0.0",
+    "main": "./src/index.ts",
+    "scripts": {
+        "dev": "nodemon ./src/index.ts",
+        "start": "node ./build/index.js",
+        "build": "tsc -p ."
+    },
+    "dependencies": {
+        "@legodb/db": "workspace:*",
+        "dotenv": "^16.4.5",
+        "fastify": "^4.28.1",
+        "fastify-plugin": "^5.0.1",
+        "pino": "^9.5.0",
+        "pino-pretty": "^13.0.0",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@types/node": "20.5.7",
+        "nodemon": "^2.0.22",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.2"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
