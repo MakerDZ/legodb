@@ -6,7 +6,7 @@ import queryDatabase from '../app/plugins/db-query';
 
 const createServer = async () => {
     const server = fastify({
-        logger: logger,
+        //logger: logger,
     });
 
     server.get('/', async (request, reply) => {
