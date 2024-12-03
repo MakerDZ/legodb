@@ -106,6 +106,7 @@ model TableAccessToken {
   name              String
   token             String   @unique
   tableAccess       String
+  databaseID        String
   actionAccessLevel String[]
 }
 

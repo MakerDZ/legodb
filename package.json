@@ -9,6 +9,7 @@
         "dev:backend": "turbo dev --filter=@legodb/backend",
         "db:push": "turbo db:push",
         "db:generate": "turbo db:generate",
+        "db:push-web": "turbo db:push-web",
         "db:generate-web": "turbo db:generate-web",
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""

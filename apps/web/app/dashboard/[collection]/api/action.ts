@@ -11,26 +11,24 @@ import { createApiUseCase, deleteApiUseCase } from '@/use-cases/api';
 export const createAPIAction = actionClient
     .schema(APIToken)
     .action(
-        async ({ parsedInput: { name, tableAccess, actionAccessLevel } }) => {
+        async ({
+            parsedInput: { name, tableAccess, actionAccessLevel, databaseID },
+        }) => {
             try {
                 const { data, error: inputParserError } = APIToken.safeParse({
                     name,
                     actionAccessLevel,
                     tableAccess,
+                    databaseID,
                 });
-
                 if (inputParserError) {
                     throw new InputParseError('Invalid Error', {
                         cause: inputParserError,
                     });
                 }
-
                 //await applyRateLimit('create-api', 10, 60000);
-
                 const authUser = await assertAuthenticated();
-
                 const api = await createApiUseCase(data, authUser);
-
                 return {
                     data: api,
                     status: 'success',

@@ -31,6 +31,7 @@ declare module 'fastify' {
             id: string;
             token: string;
             tableAccess: string;
+            databaseID: string;
             actionAccessLevel: string[];
         } | null>;
     }

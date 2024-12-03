@@ -30,7 +30,7 @@ export class DatabaseController {
             }
 
             const data = await request.databaseQuery({
-                databaseName: database.tableAccess,
+                databaseID: database.databaseID,
                 page,
                 limit,
             });
@@ -39,7 +39,7 @@ export class DatabaseController {
             return reply.status(200).send({
                 success: true,
                 message: 'Database access verified successfully.',
-                data,
+                ...data,
             });
         } catch (error: any) {
             // Handle unexpected errors

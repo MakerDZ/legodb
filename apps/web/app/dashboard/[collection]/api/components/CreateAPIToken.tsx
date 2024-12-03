@@ -35,6 +35,7 @@ const CreateAPIToken = ({
         formState: { errors, isSubmitting },
         control,
         reset,
+        setValue,
     } = useForm<TypeAPiToken>({
         resolver: zodResolver(APIToken),
     });
@@ -90,7 +91,23 @@ const CreateAPIToken = ({
                         </div>
 
                         <div>
-                            <Select {...register('tableAccess')} label="Table ">
+                            <Select
+                                onSelectionChange={(selectedKey) => {
+                                    const selectedDB =
+                                        Array.from(selectedKey)[0];
+                                    const dbInfo = data.filter(
+                                        (db) => db.name == selectedDB
+                                    );
+                                    if (dbInfo.length > 0) {
+                                        const dbID = dbInfo[0].id;
+                                        setValue('databaseID', dbID, {
+                                            shouldValidate: true,
+                                        });
+                                    }
+                                }}
+                                {...register('tableAccess')}
+                                label="Database"
+                            >
                                 {data.map((item) => (
                                     <SelectItem
                                         key={item.name}

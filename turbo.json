@@ -20,10 +20,14 @@
       "db:generate": {
           "cache": false
       },
+
+      "db:push": {
+          "cache": false
+      },
       "db:generate-web": {
           "cache": false
       },
-      "db:push": {
+      "db:push-web": {
           "cache": false
       },
       "db:view": {

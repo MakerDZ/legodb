@@ -12,19 +12,19 @@ const queryCache = new LRU<string, any>({
 });
 
 interface DatabaseQuery {
-    databaseName: string;
+    databaseID: string;
     page: number;
     limit: number;
 }
 
 // Extract common database fetch logic
 const fetchDatabaseData = async (
-    databaseName: string,
+    databaseID: string,
     page: number,
     limit: number
 ) => {
     // Create a unique cache key based on query parameters
-    const cacheKey = JSON.stringify({ databaseName, page, limit });
+    const cacheKey = JSON.stringify({ databaseID, page, limit });
 
     // Check cache first
     const cachedResult = queryCache.get(cacheKey);
@@ -33,46 +33,32 @@ const fetchDatabaseData = async (
         return cachedResult;
     }
 
-    // Parallel database queries for better performance
-    const [database, totalCount, topRowData] = await Promise.all([
-        db.database.findFirst({
-            where: { name: databaseName },
-            select: {
-                id: true,
-                columnOrders: {
-                    orderBy: { order: 'asc' },
-                },
-            },
-        }),
+    const [totalCount, topRowData] = await Promise.all([
         db.rowOrder.count({
             where: {
-                databaseId: (
-                    await db.database.findFirst({
-                        where: { name: databaseName },
-                        select: { id: true },
-                    })
-                )?.id,
+                databaseId: databaseID,
             },
         }),
         db.rowOrder.findMany({
-            where: {
-                databaseId: (
-                    await db.database.findFirst({
-                        where: { name: databaseName },
-                        select: { id: true },
-                    })
-                )?.id,
+            where: { databaseId: databaseID },
+            select: {
+                id: true,
+                order: true,
+                rowData: {
+                    select: {
+                        id: true,
+                        name: true,
+                        type: true,
+                        content: true,
+                        createdAt: true,
+                    },
+                },
             },
-            include: { rowData: true },
             orderBy: { order: 'asc' },
             skip: (page - 1) * limit,
             take: limit,
         }),
     ]);
-
-    if (!database) {
-        return null;
-    }
 
     // Measure DataPhaser processing time
     const startTime = performance.now();
@@ -100,9 +86,9 @@ const fetchDatabaseData = async (
 const queryDatabase: FastifyPluginAsync = async (fastify) => {
     fastify.decorateRequest(
         'databaseQuery',
-        async function ({ databaseName, page, limit }: DatabaseQuery) {
+        async function ({ databaseID, page, limit }: DatabaseQuery) {
             try {
-                return await fetchDatabaseData(databaseName, page, limit);
+                return await fetchDatabaseData(databaseID, page, limit);
             } catch (err) {
                 console.error('Database Query Error:', err);
                 return null;

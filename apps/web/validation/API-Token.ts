@@ -15,6 +15,7 @@ export type TypeAPiTokenSchema = z.infer<typeof APITokenSchema>;
 export const APIToken = z.object({
     name: z.string().min(1, { message: 'Token name is required' }),
     tableAccess: z.string().min(1, { message: 'Table name is required' }),
+    databaseID: z.string().min(1, { message: 'DatabaseID is required.' }),
     actionAccessLevel: z
         .array(z.string())
         .min(1, { message: 'At least one access level must be selected' }),

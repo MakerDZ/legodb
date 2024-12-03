@@ -9,6 +9,7 @@ export async function createApi(input: TypeAPiToken, token: string) {
                 token: token,
                 tableAccess: input.tableAccess,
                 actionAccessLevel: input.actionAccessLevel,
+                databaseID: input.databaseID,
             },
         });
 
