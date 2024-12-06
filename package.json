@@ -8,6 +8,7 @@
         "dev:old-web": "turbo dev --filter=@legodb/old-web",
         "dev:web": "turbo dev --filter=@legodb/web",
         "dev:backend": "turbo dev --filter=@legodb/backend",
+        "build:old-web": "turbo build --filter=@legodb/old-web",
         "db:push": "turbo db:push",
         "db:generate": "turbo db:generate",
         "db:push-web": "turbo db:push-web",

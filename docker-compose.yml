@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: backend-api
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    ports:
+      - "4444:4444"
+    environment:
+      - PORT=4444
+      - DATABASE_URL=
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - app_network
+
+networks:
+  app_network:

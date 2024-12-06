@@ -4,17 +4,19 @@
     "main": "./src/index.ts",
     "scripts": {
         "dev": "nodemon ./src/index.ts",
-        "start": "node ./build/index.js",
+        "start": "ts-node ./build/index.js",
         "build": "tsc -p ."
     },
     "dependencies": {
         "@legodb/db": "workspace:*",
         "dotenv": "^16.4.5",
+        "envalid": "^8.0.0",
         "fastify": "^4.28.1",
         "fastify-plugin": "^5.0.1",
         "lru-cache": "^11.0.2",
         "pino": "^9.5.0",
         "pino-pretty": "^13.0.0",
+        "winston": "^3.17.0",
         "zod": "^3.23.8"
     },
     "devDependencies": {
