@@ -1,42 +1,27 @@
-import '@/styles/globals.css';
-import { Metadata, Viewport } from 'next';
-import { Suspense } from 'react';
-
-import { Providers } from '../providers/next-provider';
-
-import { siteConfig } from '@/config/site';
-import AppLoading from './loading';
-import { QueryProviders } from '@/providers/QueryProvider';
+import type { Metadata } from 'next';
+import './globals.css';
+import { ThemeProvider } from '@/providers/theme-provider';
+import SideMenu from '@/components/app/SideMenu/SideMenuContainer';
 
 export const metadata: Metadata = {
-    title: {
-        default: siteConfig.name,
-        template: `%s - ${siteConfig.name}`,
-    },
-    description: siteConfig.description,
-    icons: {
-        icon: '/favicon.ico',
-    },
-};
-
-export const viewport: Viewport = {
-    themeColor: [{ color: 'white', media: '(prefers-color-scheme: light)' }],
+    title: 'LegoDB',
+    description:
+        '🚀 simple and go-to backend solution for all of your ship-fast project.',
 };
 
 export default function RootLayout({
     children,
-}: {
+}: Readonly<{
     children: React.ReactNode;
-}) {
+}>) {
     return (
-        <html suppressHydrationWarning lang="en">
-            <head />
-            <body className="min-h-screen w-full font-nunito">
-                <Providers>
-                    <Suspense fallback={<AppLoading />}>
-                        <QueryProviders>{children}</QueryProviders>
-                    </Suspense>
-                </Providers>
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className="w-full min-h-screen font-nunito flex flex-row overflow-hidden"
+                suppressHydrationWarning
+            >
+                <SideMenu />
+                <ThemeProvider>{children}</ThemeProvider>
             </body>
         </html>
     );

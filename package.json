@@ -5,6 +5,7 @@
         "commit": "cz-customizable",
         "build": "turbo build",
         "dev": "turbo dev",
+        "dev:old-web": "turbo dev --filter=@legodb/old-web",
         "dev:web": "turbo dev --filter=@legodb/web",
         "dev:backend": "turbo dev --filter=@legodb/backend",
         "db:push": "turbo db:push",
