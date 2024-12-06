@@ -7,7 +7,7 @@ const SideMenu = () => {
     const projects: any = [];
 
     return (
-        <nav className="min-w-20 bg-[#F9FAFB] border-r-2 border-r-solid border-r-[#E9ECEF] h-screen flex flex-col">
+        <nav className="min-w-20 min-h-screen bg-[#F9FAFB] border-r-2 border-r-solid border-r-[#E9ECEF] flex flex-col">
             <BounceWrapper>
                 <img
                     className="w-14 h-14 mx-auto my-5 hover:cursor-pointer"
