@@ -1,41 +1,42 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
-  "tasks": {
-      "build": {
-          "dependsOn": ["^build"],
-          "inputs": ["$TURBO_DEFAULT$", ".env*"],
-          "outputs": [".next/**", "!.next/cache/**"]
-      },
-      "start": {
-          "dependsOn": ["^build"],
-          "cache": false
-      },
-      "lint": {
-          "dependsOn": ["^lint"]
-      },
-      "check-types": {
-          "dependsOn": ["^check-types"]
-      },
-      "dev": {
-          "cache": false,
-          "persistent": true
-      },
-      "db:generate": {
-          "cache": false
-      },
+    "$schema": "https://turbo.build/schema.json",
+    "ui": "tui",
+    "globalDependencies": [".env"],
+    "tasks": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["$TURBO_DEFAULT$", ".env", ".env.local"],
+            "outputs": [".next/**", "!.next/cache/**"]
+        },
+        "start": {
+            "dependsOn": ["^build"],
+            "cache": false
+        },
+        "lint": {
+            "dependsOn": ["^lint"]
+        },
+        "check-types": {
+            "dependsOn": ["^check-types"]
+        },
+        "dev": {
+            "cache": false,
+            "persistent": true
+        },
+        "db:generate": {
+            "cache": false
+        },
 
-      "db:push": {
-          "cache": false
-      },
-      "db:generate-web": {
-          "cache": false
-      },
-      "db:push-web": {
-          "cache": false
-      },
-      "db:view": {
-          "cache": false
-      }
-  }
+        "db:push": {
+            "cache": false
+        },
+        "db:generate-web": {
+            "cache": false
+        },
+        "db:push-web": {
+            "cache": false
+        },
+        "db:view": {
+            "cache": false
+        }
+    }
 }
