@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  old-web:
+    container_name: old-web
+    build:
+      context: .
+      dockerfile: ./apps/old-web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - app_network
+
+networks:
+  app_network:

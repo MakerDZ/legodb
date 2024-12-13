@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:18 AS base
 
 FROM base AS builder
     WORKDIR /app
@@ -6,7 +6,7 @@ FROM base AS builder
 
     COPY . .
 
-    RUN turbo prune @legodb/backend --docker
+    RUN turbo prune @legodb/old-web --docker
 
 FROM base AS installer
     WORKDIR /app
@@ -24,7 +24,7 @@ FROM base AS installer
 
     RUN turbo run db:generate
     RUN pnpm rebuild -r
-    RUN turbo run build --filter=@legodb/backend...
+    RUN turbo run build --filter=@legodb/old-web...
 
 FROM base AS runner
     WORKDIR /app
@@ -36,4 +36,4 @@ FROM base AS runner
     USER app
     COPY --from=installer /app .
 
-    CMD pnpm --filter @legodb/backend run start
+    CMD pnpm --filter @legodb/old-web run start
